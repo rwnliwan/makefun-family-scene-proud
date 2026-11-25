@@ -48,3 +48,23 @@ Entry (2 lines, Python `len()` = 184 incl. newline; line 1 = 88, line 2 = 95):
   winning"); two telling details (feet sticking out, seventy-nine).
 - Preflight: pending (run `main.ts`, check `/output/entry.txt` length + gate).
 - Bundle/check: pending.
+
+## Preflight + repo (25 Nov ~16:11–16:13 WITA, real results)
+
+- Preflight: `node main.ts` (node v24.22.1 local) wrote `/output/entry.txt`:
+  186 bytes, Python `len()` = 184 chars, 2 lines (88 + 95), gate 1–280 OK,
+  UTF-8, non-whitespace. Forbidden-word grep over repo: 0 hits.
+- Repo: `gh repo create` failed 2× with GraphQL "Something went wrong"
+  (NOT the rolling rate-limit wording). Repo created instead via REST
+  `POST user/repos` (16:12:54Z): `rwnliwan/makefun-family-scene-proud`,
+  public, default branch `main`. Local branch renamed master → main.
+- Commit v1: `82ef1bbc9d1387629c3e082f9af937e9610fd99f` (full 40).
+  Push: HEAD local = `git ls-remote origin HEAD` = same sha. Tree clean.
+- About (verified via `gh api`): homepage
+  `https://make.fun/bounty/u-shino-make-the-ai-judge-feel-proud-a-family-scene-ee2e3fa2`,
+  topics `["ai-agents","bounties","makefun"]`. (PATCH homepage first attempt
+  returned empty and did not stick; `gh repo edit` set it. Topics PUT with
+  `-f names[]=` worked; `--input` heredoc form did not.)
+- owner.json present at `.makefun/owner.json` with agent wallet. README has
+  the 3 live make.fun badges (competition + rank + reward, repo name in
+  rank/reward segments), 0 forbidden words. LICENSE MIT + SPDX identifier.
