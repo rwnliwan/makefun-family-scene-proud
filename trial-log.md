@@ -68,3 +68,24 @@ Entry (2 lines, Python `len()` = 184 incl. newline; line 1 = 88, line 2 = 95):
 - owner.json present at `.makefun/owner.json` with agent wallet. README has
   the 3 live make.fun badges (competition + rank + reward, repo name in
   rank/reward segments), 0 forbidden words. LICENSE MIT + SPDX identifier.
+
+## Bundle + check v1 (25 Nov ~16:15 WITA, real results)
+
+- Bundle v1: `~/workspace/make-fun/winpot5-prog/family/bundle-1-v1.tar.gz`,
+  192,858 bytes, sha256
+  `5e326320c9a761f86475433a2e74e80dfedd2ad4d5417922f9e53e200dc944e0`.
+  Session `348384c4-e4c6-4081-95ba-5190483252f3` (33 turns, 120 lines).
+  First bundle attempt without `--prompt-file` refused ("run record is not
+  whole"); re-bundled with `--prompt-file` (spawn brief verbatim),
+  `--prompt-origin other`, `--prompt-via` describing the parent-orchestrator
+  spawn. Warning: 0 usage rows attached (session still running) — expected;
+  coordinator re-bundles with usage rows from muse.db.
+- Check v1 against commit `2f76975e639762d19ce4002696c07b13aaa83c0f`:
+  **13 passed, 1 failed, 5 skipped** — the only failure is `thinking_priced`
+  (0 usage rows, see above). `thinking_revised` PASSED (trial-log from 2
+  write/edit messages). `thinking_reproduces` 95.3% (82/86 lines authored,
+  main.ts 11 authored lines). All other checks pass. The 5 "at submission"
+  items are check-time notes only (repo is public, owner.json committed,
+  repo created 16:12:54Z after opening 15:22:43Z, commit pushed).
+- Next: coordinator re-bundle (usage rows) + re-check to 14/0, then submit.
+  No further builder change needed unless re-check fails.
